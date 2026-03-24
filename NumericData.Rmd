@@ -49,6 +49,7 @@ student_health %>%
 ```
 
 
+I take the new dataset I made to to bin the BMI values and make a new column that renames the values into categorical health meanings. I display the first 6 instances in a table. 
 ^[Question 2 complete]
 
 
