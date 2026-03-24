@@ -65,6 +65,7 @@ student_health %>%
 ```
 
 
+I take the same BMI dataset to group by sex in order to summarize operations the reflects both sex's. I got the minimum and maximum BMI's of each sex and put it in a table. 
 ^[Question 3 complete]
 
 
