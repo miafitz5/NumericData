@@ -16,20 +16,85 @@ data(StudentSurvey)
 
 ```
 
+
 ### Top 6 of New BMI Data
 
 
 ```{r}
 student_health <- StudentSurvey %>%
   mutate(BMI = 701 * Weight/Height^2) %>%
-  mutate(round(BMI, 1)) %>%
-  select(Sex, Weight, Height, BMI)
+  mutate(BMI = round(BMI, 1))
 
 student_health %>%
-   head(6) %>%
+  select(Sex, Weight, Height, BMI) %>%
+  head(6) %>%
   kable() 
 
 ```
 
 
 ^[Question 1 complete]
+
+
+### Binning for Weight Status 
+
+
+```{r}
+student_health %>%
+  mutate(Status = cut(BMI, c(-Inf, 18.5, 24.9, 29.9, Inf), labels = c("Underweight", "Healthy Weight", "Overweight", "Obese"))) %>%
+  head(6) %>%
+  kable()
+
+```
+
+
+^[Question 2 complete]
+
+
+### Highest and Lowest BMIs for Male and Female Students
+
+
+```{r}
+student_health %>%
+  group_by(Sex) %>%
+  summarize(min_BMI = min(BMI, na.rm=TRUE), max_BMI = max(BMI, na.rm=TRUE)) %>%
+  kable()
+
+```
+
+
+^[Question 3 complete]
+
+
+### Greater of Each Student’s Verbal and Math SAT Scores
+
+
+```{r}
+StudentSurvey %>%
+  mutate(Max_SAT= pmax(VerbalSAT, MathSAT, na.rm=TRUE)) %>%
+  select(VerbalSAT, MathSAT, Max_SAT) %>%
+  head(6) %>%
+  kable()
+  
+```
+
+
+^[Question 4 complete]
+
+
+###
+
+
+```{r}
+StudentSurvey %>%
+  mutate(TotalSAT = MathSAT + VerbalSAT, 
+         Z_score = (TotalSAT - mean(TotalSAT)) / sd(TotalSAT)) %>%
+  select(VerbalSAT, MathSAT, TotalSAT, Z_score) %>%
+  head(6) %>%
+  kable()
+
+```
+
+
+
+
