@@ -1,0 +1,35 @@
+---
+title: "NumericData"
+author: "Mia Fitzgerald"
+date: "3/24/2026"
+output:
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE)
+library(Lock5Data)
+library(tidyverse)
+library(knitr)
+data(StudentSurvey)
+
+```
+
+### Top 6 of New BMI Data
+
+
+```{r}
+student_health <- StudentSurvey %>%
+  mutate(BMI = 701 * Weight/Height^2) %>%
+  mutate(round(BMI, 1)) %>%
+  select(Sex, Weight, Height, BMI)
+
+student_health %>%
+   head(6) %>%
+  kable() 
+
+```
+
+
+^[Question 1 complete]
