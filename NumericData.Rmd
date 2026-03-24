@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 library(Lock5Data)
 library(tidyverse)
 library(knitr)
@@ -33,6 +33,7 @@ student_health %>%
 ```
 
 
+I mutated the data to make and round the data for a new BMI column. Then I stored that in a new dataset incase I want to use that column again. Then I select the only 4 columns I want to display for the first 6 instances in a table. 
 ^[Question 1 complete]
 
 
