@@ -82,7 +82,7 @@ StudentSurvey %>%
 ^[Question 4 complete]
 
 
-###
+### Z-Scores for Students’ Total SAT Scores
 
 
 ```{r}
@@ -96,5 +96,6 @@ StudentSurvey %>%
 ```
 
 
+^[Question 5 complete]
 
 
