@@ -82,6 +82,7 @@ StudentSurvey %>%
 ```
 
 
+Taking the original dataset, I use pmax to compare the two SAT scores and make a new column with the greater score. Then I select the columns that helped make it, including itself. And displayed the first 6 and put it in a table. 
 ^[Question 4 complete]
 
 
