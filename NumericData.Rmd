@@ -23,10 +23,10 @@ data(StudentSurvey)
 ```{r}
 student_health <- StudentSurvey %>%
   mutate(BMI = 701 * Weight/Height^2) %>%
-  mutate(BMI = round(BMI, 1))
+  mutate(BMI = round(BMI, 1)) %>%
+  select(Sex, Weight, Height, BMI) 
 
 student_health %>%
-  select(Sex, Weight, Height, BMI) %>%
   head(6) %>%
   kable() 
 
@@ -74,8 +74,7 @@ I take the same BMI dataset to group by sex in order to summarize operations the
 
 ```{r}
 StudentSurvey %>%
-  mutate(Max_SAT= pmax(VerbalSAT, MathSAT, na.rm=TRUE)) %>%
-  select(VerbalSAT, MathSAT, Max_SAT) %>%
+  mutate(Max_SAT= pmax(VerbalSAT, MathSAT, na.rm=TRUE), .keep = "used") %>%
   head(6) %>%
   kable()
   
@@ -91,9 +90,7 @@ Taking the original dataset, I use pmax to compare the two SAT scores and make a
 
 ```{r}
 StudentSurvey %>%
-  mutate(TotalSAT = MathSAT + VerbalSAT, 
-         Z_score = (TotalSAT - mean(TotalSAT)) / sd(TotalSAT)) %>%
-  select(VerbalSAT, MathSAT, TotalSAT, Z_score) %>%
+  mutate(Z_score = (SAT - mean(SAT)) / sd(SAT), .keep = "used") %>%
   head(6) %>%
   kable()
 
